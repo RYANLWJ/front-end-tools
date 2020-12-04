@@ -1,0 +1,27 @@
+{
+  "name": "base-tools-ry",
+  "version": "1.0.0",
+  "description": "cunstom front-end common tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev",
+    "build": "webpack",
+    "prepublish": "webpack"
+  },
+  "author": "RYAN L",
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-runtime": "^6.26.0",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}

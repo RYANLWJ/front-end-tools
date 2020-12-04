@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "env"
+    ]
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread" // 解决无法识别拓展运算符
+  ]
+}
