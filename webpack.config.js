@@ -1,19 +1,17 @@
 const TerserPlugin = require("terser-webpack-plugin"); // 引入压缩插件
 const path = require("path");
+const glob = require("glob");
 module.exports = {
   mode: "none", // 因为默认是production 默认会进行压缩
 
   entry: {
-    index: [
-      "babel-polyfill",
-      "./lib/Array.js", 
-    ],
-    "index.min": [
-      "babel-polyfill",
-      "./lib/Array.js", 
-    ],
+    index: glob.sync("./lib/index.js"),
+    "index.min": glob.sync("./lib/index.js"),
   },
   output: {
+    globalObject:"this",
+    libraryTarget: "umd", // 
+    // library:"tools",//输出库的对象名
     filename: "[name].js",
     path: __dirname + "/dist",
   },

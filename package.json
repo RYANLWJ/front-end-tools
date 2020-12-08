@@ -4,9 +4,8 @@
   "description": "cunstom front-end common tools",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev",
     "build": "webpack",
-    "prepublish": "webpack"
+    "test": "webpack && cd ./test && node test.js"
   },
   "author": "RYAN L",
   "license": "ISC",
