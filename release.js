@@ -79,7 +79,7 @@ const updatePackageJson = async (nextVersion) => {
     }
     await createWriteFile(DIR_PACKAGE_JSON_PATH, newPackageJson)
     // await createWriteFile(LIBRARY_PACKAGE_JSON_PATH, newDistPackageJson)
-    // await run(`npx prettier --write ${DIR_PACKAGE_JSON_PATH} ${LIBRARY_PACKAGE_JSON_PATH}`)
+    await run(`npx prettier --write ${DIR_PACKAGE_JSON_PATH} ${LIBRARY_PACKAGE_JSON_PATH}`)
 
     return null
 }
