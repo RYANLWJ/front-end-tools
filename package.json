@@ -1,13 +1,13 @@
 {
   "name": "base-tools-ry",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "description": "cunstom front-end common tools",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "test": "webpack && cd ./test && node test.js",
     "clean": "rimraf base-tools-ry/{dist,esm,lib}",
-    "publish": "cd base-tools-ry && npm publish && cd .."
+    "publish": "cd base-tools-ry && npm publish "
   },
   "author": "RYAN L",
   "license": "ISC",
