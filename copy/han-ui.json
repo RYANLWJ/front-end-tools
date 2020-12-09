@@ -1,0 +1,29 @@
+{
+  "name": "han-ui",
+  "author": "fengxianhua",
+  "version": "2.1.1",
+  "description": "react UI components",
+  "main": "./lib/index.js",
+  "modules": "./esm/index.js",
+  "keywords": [
+    "react",
+    "javascript",
+    "UI",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HansonGor/Han-UI.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cpr": "^3.0.1",
+    "antd-mobile": "^2.3.4",
+    "classnames": "^2.2.6"
+  },
+  "browserslist": [
+    "last 10 version",
+    "> 1%",
+    "IE 10"
+  ]
+}
