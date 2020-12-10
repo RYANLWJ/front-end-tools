@@ -1,6 +1,6 @@
 {
   "name": "base-tools-ry",
-  "version": "17.0.0",
+  "version": "18.0.1-0",
   "description": "cunstom front-end common tools",
   "main": "index.js",
   "scripts": {
