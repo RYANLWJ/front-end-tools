@@ -1,12 +1,12 @@
 {
   "name": "base-tools-ry",
-  "version": "24.0.0",
+  "version": "26.0.0",
   "description": "cunstom front-end common tools",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "test": "webpack && cd ./test && node test.js",
-    "clean": "rimraf base-tools-ry/{dist,esm,lib}",
+    "clean": "rimraf undefined/{dist,esm,lib}",
     "publish": "npm publish "
   },
   "author": "RYAN L",

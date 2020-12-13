@@ -1,0 +1,17 @@
+{
+  "name": "release",
+  "version": "4.0.0",
+  "description": "",
+  "main": "release.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf undefined/{dist,esm,lib}",
+    "publish": "npm publish "
+  },
+  "author": "RYAN",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "semver": "^7.3.4"
+  }
+}
