@@ -1,6 +1,6 @@
 {
   "name": "base-tools-ry",
-  "version": "28.0.0",
+  "version": "29.0.0",
   "description": "cunstom front-end common tools",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,6 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "inquirer": "^7.3.3",
-    "semver": "^7.3.4"
+    "babel-preset-env": "^1.7.0"
   }
 }
