@@ -1,6 +1,6 @@
 # A useful custom front-end public tools/methods. 一个常用的前端方法库
 
-- 这个自定义库包含了后台管理系统项目中最常用的方法 / 功能。特别是当你的项目使用 es6 / axios / elementUI / vu .js 等。帮助你！享受它 :)
+- 这个自定义库包含了后台管理系统项目中最常用的方法 / 功能。特别是当你的项目使用 es6 / axios / elementUI / vue.js 等。帮助你！享受它 :)
 -  This custom library contains the most commonly used methods/functions in backstage management system project. Especially if your project work with es6 / axios / elementUI / vue.js etc. That helps you! Enjoy it :)
 ******
 
