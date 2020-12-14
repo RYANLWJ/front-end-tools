@@ -1,4 +1,4 @@
-const { PROJECT_PACKAGE_JSON ,PROJECT_ROOT_PATH} = require("./config.json");
+const { PROJECT_PACKAGE_JSON, PROJECT_ROOT_PATH } = require("./config.json");
 const { name: LIBRARY_NAME } = PROJECT_PACKAGE_JSON;
 const semverInc = require("semver/functions/inc");
 const inquirer = require("inquirer");
@@ -76,7 +76,7 @@ const updatePackageJson = async (nextVersion) => {
  * @param {string} nextVersion - 下个版本号
  */
 const push = async (nextVersion) => {
-  await run("git add .");
+  await run("cd ../ && git add .");
   const { message } = await inquirer.prompt([
     {
       type: "input",
@@ -85,9 +85,9 @@ const push = async (nextVersion) => {
       default: "", // 默认值
     },
   ]);
-  await run(`git commit -m "v${nextVersion}${message && `: ${message}`}"`);
-  await run("git push");
-  //   return null;
+  await run(`cd ../ && git commit -m "v${nextVersion}${message && `: ${message}`}"`);
+  await run("cd ../ && git push");
+  return null;
 };
 
 /**

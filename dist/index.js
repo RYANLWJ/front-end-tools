@@ -2460,7 +2460,7 @@ var getRowByVal = function getRowByVal(arr, val, key) {
  * @description:将非常规下拉选项数组转换成label,value常规状态
  * @param {array}arr-资源数组
  * @param {array}label ['label','enumName']  将原本key为enumName转为label
- * @param {array}value ['value',] 将原本key为enumCode转为value
+ * @param {array}value ['value','enumCode'] 将原本key为enumCode转为value
  * @returns {array}[{label:xxx,value:xxx}]
  */
 var cLV = function cLV(arr, label, value) {
@@ -3213,7 +3213,7 @@ module.exports = {
 
 
 /**
- * 方法：生成n ~ m 随即数
+ * 方法：生成n ~ m 随机数
  * 调用：common.random(0,10);
  * @param min = 最小值
  * @param max = 最大值
@@ -3455,7 +3455,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /**
  *
  * @description 获取url的全部参数或指定参数
- * @param {array | void} names - ames为数组 names为空则默认获取全部参数
+ * @param {array | void} names - names为数组 names为空则默认获取全部参数
  * @return {object}
  */
 var getQueryString = function getQueryString(names) {
@@ -3704,7 +3704,7 @@ var hasChange = function hasChange(base, target, keyList) {
 /**
  * @description: 检查目标项是否存在空的
  * @param {object}options-参数
- * @param {array}keyList-要被转换的label名
+ * @param {array}keyList-keyList 要被检查的字段
  * @returns:[boolean,keyList]
  */
 var hasEmpty = function hasEmpty(options, keyList) {
