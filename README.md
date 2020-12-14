@@ -2,7 +2,7 @@
 
 - 这个自定义库包含了后台管理系统项目中最常用的方法 / 功能。特别是当你的项目使用 es6 / axios / elementUI / vue.js 等。帮助你！享受它 :)
 -  This custom library contains the most commonly used methods/functions in backstage management system project. Especially if your project work with es6 / axios / elementUI / vue.js etc. That helps you! Enjoy it :)
-******
+
 
 ### Array
 
@@ -55,8 +55,8 @@
 
 | 方法名  | 说明  | 参数|返回值|e.g|
 |  ----  | ----  | ---- |----|----|
-| is|类型判断  |.array: 判断是否为数组 <br/> .object: 判断是否为对象 <br/> .function: 判断是否为函数 <br/> .string: 判断是否为字符串 <br/> .boolean: 判断是否为布尔值 <br/> .empty: 判断是否为空 <br/> .number: 判断是否为数字|  Boolean|
-| hasChange(base, target, keyList)|校验两个对象某些字段值是否相等 |base:object 基准对象，target:object 目标对象，keyList:array 要进行比较的键集合（不传则比较全部键集合）| Boolean |
+| is|<div style="width: 200pt">类型判断  | .array: 判断是否为数组 <br/> .object: 判断是否为对象 <br/> .function: 判断是否为函数 <br/> .string: 判断是否为字符串 <br/> .boolean: 判断是否为布尔值 <br/> .empty: 判断是否为空 <br/> .number: 判断是否为数字|  Boolean|
+| hasChange(base, target, keyList)|校验两个对象某些字段值是否相等 |base:object 基准对象<br/>target:object 目标对象<br/>keyList:array 要进行比较的键集合（不传则比较全部键集合）| Boolean |
 | checkKeyChain(obj, ...keyList))|检查对象是否存在我们定义的连续属性 |obj:Object<br/> keyList:[string] 定义的键名顺序|Boolean| checkKeyChain<br/>(res,"data","result",...)|
 | hasEmpty(options, keyList)|检查目标项是否存在空的 |options:object 基准对象<br/>keyList:array 要检测的键| [Boolean,Array/null] |
 | isEmpty(v) |检查所有类型非空 | v:any| Boolean|
@@ -84,4 +84,4 @@
 |  ----  | ----  | ---- |----|----|
 | deviceVersions()|获取移动终端浏览器版本信息 | |String|
 
-# RYAN
+# RYAN 😏
