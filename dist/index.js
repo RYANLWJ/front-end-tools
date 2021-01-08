@@ -4551,7 +4551,7 @@ var convertImgToBase64 = function convertImgToBase64(url, callback, outputFormat
       img = new Image();
   img.crossOrigin = "Anonymous";
   img.onload = function () {
-    var dataURL;
+    var dataURL = void 0;
     canvas.height = img.height;
     canvas.width = img.width;
     ctx.drawImage(img, 0, 0);
@@ -4561,7 +4561,6 @@ var convertImgToBase64 = function convertImgToBase64(url, callback, outputFormat
   };
   img.src = url;
 };
-
 module.exports = {
   convertImgToBase64: convertImgToBase64
 };
@@ -4664,7 +4663,8 @@ var throttle = function throttle(handle, delay, immediately) {
 
 module.exports = {
   flow2str: flow2str,
-  debounce: debounce
+  debounce: debounce,
+  throttle: throttle
 };
 
 /***/ }),

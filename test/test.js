@@ -1,6 +1,23 @@
-let Tools = require("../dist/index.js");
+function curry(fn) {
+  let length = fn.length;
+  let args = [];
+  return function curryFn(...curryArgs) {
+    args = args.concat(curryArgs);
+    if (args.length > length) {
+      throw new Error("arguments length error");
+    }
+    if (args.length === length) {
+      return fn(...args);
+    }
+    return curryFn;
+  };
+}
 
-let counts = Object.keys(Tools).length;
+let add = (a,b) => {
+  return a+b
+}
 
-console.log(Tools);
-console.log("\033[;33m total:" + counts + "\033[0m");
+let res = curry(add)
+
+res(1)(2)
+console.log(res);

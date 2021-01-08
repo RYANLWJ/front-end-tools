@@ -4,7 +4,6 @@
 -  This custom library contains the most commonly used methods/functions in backstage management system project. Especially if your project work with es6 / axios / elementUI / vue.js etc. That helps you! Enjoy it :)
 
 ### Array
-
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :-------:|  :--  | :--  | :-- |:--|:--|
 |  1| getRowByVal（arr,val,key）  | 根据 value 值获取其在数组对象所属的对象 | arr:array 原数组 <br/> val:string 值 <br/> key:string 这个值所属的键|Object
@@ -34,10 +33,11 @@
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :--:|  :--  | :--  | :-- |:--|:--|
-|  1| clearObj(obj)|清空对象 |obj:object ||
+|  1| clearObj(obj)|清空对象 |obj:object |Object|
 |  2| deepClone(obj)|深度拷贝对象 |obj:object |Object|
 |  3| objectFilter(options)|过滤对象里空的键值对 |options: 基准对象 |Object|
 |  4| replaceKeys(obj, keyOrig, keyCurr)|转换对象指定的 key 名 |obj:object <br/>keyOrig:string 要被替换的原始键名 <br/>keyCur:string 新的键名|Object|
+|  5| convertNum2Str(obj, keys)|把对象里的属性值为数字类型的转换成字符串类型|obj:object <br/>keys:array 要进行转换的键集合|Object|
 
 <!-- | selector(from, selectors, keys = null)|从对象中检索出给定选择器指定的一组属性 |？|？| -->
 
