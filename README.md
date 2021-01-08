@@ -6,7 +6,7 @@
 ### Array
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
-|  :--:|  :--  | :--  | :-- |:--|:--|
+|  :-------:|  :--  | :--  | :-- |:--|:--|
 |  1| getRowByVal（arr,val,key）  | 根据 value 值获取其在数组对象所属的对象 | arr:array 原数组 <br/> val:string 值 <br/> key:string 这个值所属的键|Object
 |  2| cLV(arr, label, value)   | 枚举资源'label'/'value' 键名的转换 | arr:array 资源数组<br/>label:array ['label','enumName']  将原本 key 为 enumName 转为 label<br/>value:array['value','enumCode'] 将原本 key 为 enumCode 转为 value|Array
 |  3| getArrDifference (arr1, arr2)  | 获取两个普通数组不重复元素 | arr1:array 第一个数组<br/> arr2:array 第二个数组|Array|
@@ -17,7 +17,7 @@
 |  8| mergeAndDiff (list, key, name) | 合并列表子项数组并去重|list:array<br/> key:string/array<br/> name:string|Array|
 |  9| compareByKey(arr, key, callback)   | 在数组对象中，比较各项某个 key 值，获取最终筛选项 |arr:array 原数组<br/>key:string 键<br/>callback:fn（prev: 前一项，cur: 后一项）|Array|
 |  10| findMostItems (arr)  | 获取出现次数最多次数项|arr:array 数组|Array|
-|  11| countEachItem (arr, key)  | 统计数组每项元素出现次数|arr:array 数组，key:string 空的时候统计普通类型数组每项元素出现的次数，否则就只统计数组对象里指定 key 名的元素出现次数|Number|
+|  11| countEachItem (arr, key)  | 统计数组每项元素出现次数|arr:array 数组，key:string 空的时候统计普通类型数组每项元素出现的次数，否则就只统计数组对象里指定 key 名的元素出现次数|Object|
 |  12| fMap(arr, fn1, fn2)   | 利用 filter 和 map 实现过滤数据和添加额外属性|arr:array<br/> fn1:fn<br/> fn2:fn |Array| let _arr = fMap( arr,(item) => item.age == 28,(item) => ({ ...item, sex: sex })
 |  13| sortByKey (key, arr, callback)  | 根据数组对象的某个 key 进行排序|key:string <br/>arr:array<br/> callback:function|Array|
 |  14| toFirst(arr, index)  | 將某个元素置頂|arr:array 数组<br/>index:number 索引|Array|toFirst([1,2,3,4,5],2)  返回 [3,1,2,4,5]
@@ -101,7 +101,7 @@
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :--:|  :--  | :--  | :-- |:--|:--|
-|  1| convertImgToBase64(url, callback, outputFormat)|把图片转换成base64字符串 |url:string 图片链接 <br/>  callback:function outputFormat:string |String|
+|  1| convertImgToBase64(url, callback, outputFormat)|把图片转换成base64字符串 |url:string 图片链接 <br/>  callback:function outputFormat:string |String|    convertImgToBase64("./img123.png" ,(base64str)=>el.src = base64str)
 
 ### Download
 
