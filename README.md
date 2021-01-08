@@ -1,4 +1,4 @@
-# A useful custom front-end public tools/methods. 一个常用的前端方法库
+# An useful custom front-end public tools/methods. 一个常用的前端方法库
 
 - 这个自定义库包含了后台管理系统项目中最常用的方法 / 功能。特别是当你的项目使用 es6 / axios / elementUI / vue.js 等。帮助你！享受它 :)
 -  This custom library contains the most commonly used methods/functions in backstage management system project. Especially if your project work with es6 / axios / elementUI / vue.js etc. That helps you! Enjoy it :)
@@ -10,7 +10,7 @@
 |  1| getRowByVal（arr,val,key）  | 根据 value 值获取其在数组对象所属的对象 | arr:array 原数组 <br/> val:string 值 <br/> key:string 这个值所属的键|Object
 |  2| cLV(arr, label, value)   | 枚举资源'label'/'value' 键名的转换 | arr:array 资源数组<br/>label:array ['label','enumName']  将原本 key 为 enumName 转为 label<br/>value:array['value','enumCode'] 将原本 key 为 enumCode 转为 value|Array
 |  3| getArrDifference (arr1, arr2)  | 获取两个普通数组不重复元素 | arr1:array 第一个数组<br/> arr2:array 第二个数组|Array|
-|  4| uniqueBy(arr, fn)  | 根据属性去重数组 | arr:array 去重的数组<br/>fn[string: 去重的 key/callback:row=>row 普通数组去重】|Array|
+|  4| uniqueBy(arr, fn)  | 根据属性去重数组 | arr:array 去重的数组<br/>fn[string: 去重的 key/callback:row=>row 普通数组去重|Array|
 |  5| getUniqueFrom2Arr(arr1, arr2) | 比对两个数组，获取实际唯一项 | arr1:array 第一个数组<br/>arr2:array 第二个数组|string|
 |  6| addExtraProperty(list, extra)  | 给数组对象里的每一项添加属性 | list:array 数组 <br/> extra:object 要给每项添加的键值对|Array|
 |  7| getActualNewItems (orin, curr, key) | 根据某个 key 获取实际新增项 [{...},{...}] |orin:array 原始数组<br/>curr:array 现在的数组<br/>key:string 键名|Array|
