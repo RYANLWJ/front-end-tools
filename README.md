@@ -48,6 +48,10 @@
 |  1| getStrCount(aStr, aChar) |获取某个指定字符在一串字符中出现的次数 | aStr:string 原始字符串<br/> aChar:string 要检索的字符| Number|
 |  2| trimSpace(str)|去除字符串前后空格  |str:string 字符串|  String|
 |  3| getPlaceholders(placeholders)|转换占位符  |placeholders:string|  Array| getPlaceholders("@FIRSRT @LAST")
+|  4| insertStr(str, positions, newStr)|在一串字符串里的指定索引位置插入自定义字符  |str:string 原字符串 <br/> positions:array/string 要进行插入自定义字符的索引位置 <br/> newStr:string 自定义字符|  Array| 
+|  5| getStrIndexList (str, keyString) |收集关键字符keyString的出现索引集合  |str:string 原字符串 <br/> keyString:string 关键字符|  Array| 
+|  6| splitStringByKey(str, keyString)|根据某个字符进行字符串切割  |str:string 原字符串 <br/> keyString:string 关键字符|  Array| 
+|  7| wrapStringBy (keyString, str) |在一串字符里根据某个字符开头插入换行符  |keyString:string 关键字符 <br/>str:string 原字符串|  String| 
 
 <!-- | addZero(str, num)| 给字符串补 0 |str, num| String | ? -->
 
