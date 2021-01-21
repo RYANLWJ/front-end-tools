@@ -4,6 +4,7 @@
 -  This custom library contains the most commonly used methods/functions in backstage management system project. Especially if your project work with es6 / axios / elementUI / vue.js etc. That helps you! Enjoy it :)
 
 ### Array
+
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :-------:|  :--  | :--  | :-- |:--|:--|
 |  1| getRowByVal（arr,val,key）  | 根据 value 值获取其在数组对象所属的对象 | arr:array 原数组 <br/> val:string 值 <br/> key:string 这个值所属的键|Object
@@ -48,10 +49,10 @@
 |  1| getStrCount(aStr, aChar) |获取某个指定字符在一串字符中出现的次数 | aStr:string 原始字符串<br/> aChar:string 要检索的字符| Number|
 |  2| trimSpace(str)|去除字符串前后空格  |str:string 字符串|  String|
 |  3| getPlaceholders(placeholders)|转换占位符  |placeholders:string|  Array| getPlaceholders("@FIRSRT @LAST")
-|  4| insertStr(str, positions, newStr)|在一串字符串里的指定索引位置插入自定义字符  |str:string 原字符串 <br/> positions:array/string 要进行插入自定义字符的索引位置 <br/> newStr:string 自定义字符|  Array| 
-|  5| getStrIndexList (str, keyString) |收集关键字符keyString的出现索引集合  |str:string 原字符串 <br/> keyString:string 关键字符|  Array| 
-|  6| splitStringByKey(str, keyString)|根据某个字符进行字符串切割  |str:string 原字符串 <br/> keyString:string 关键字符|  Array| 
-|  7| wrapStringBy (keyString, str) |在一串字符里根据某个字符开头插入换行符  |keyString:string 关键字符 <br/>str:string 原字符串|  String| 
+|  4| insertStr(str, positions, newStr)|在一串字符串里的指定索引位置插入自定义字符  |str:string 原字符串 <br/> positions:array/string 要进行插入自定义字符的索引位置 <br/> newStr:string 自定义字符|  Array|
+|  5| getStrIndexList (str, keyString) |收集关键字符 keyString 的出现索引集合  |str:string 原字符串 <br/> keyString:string 关键字符|  Array|
+|  6| splitStringByKey(str, keyString)|根据某个字符进行字符串切割  |str:string 原字符串 <br/> keyString:string 关键字符|  Array|
+|  7| wrapStringBy (keyString, str) |在一串字符里根据某个字符开头插入换行符  |keyString:string 关键字符 <br/>str:string 原字符串|  String|
 
 <!-- | addZero(str, num)| 给字符串补 0 |str, num| String | ? -->
 
@@ -92,8 +93,7 @@
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :--:|  :--  | :--  | :-- |:--|:--|
-|  1| EasyHttp |用Promise封装的fetch函数 |get(url) <br/>post(url, data) <br/> put(url, data) <br/>delete(url) |Promise|
-
+|  1| EasyHttp |用 Promise 封装的 fetch 函数 |get(url) <br/>post(url, data) <br/> put(url, data) <br/>delete(url) |Promise|
 
 ### Explorer
 
@@ -105,7 +105,7 @@
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :--:|  :--  | :--  | :-- |:--|:--|
-|  1| convertImgToBase64(url, callback, outputFormat)|把图片转换成base64字符串 |url:string 图片链接 <br/>  callback:function outputFormat:string |String|    convertImgToBase64("./img123.png" ,(base64str)=>el.src = base64str)
+|  1| convertImgToBase64(url, callback, outputFormat)|把图片转换成 base64 字符串 |url:string 图片链接 <br/>  callback:function outputFormat:string |String|    convertImgToBase64("./img123.png" ,(base64str)=>el.src = base64str)
 
 ### Download
 
@@ -113,25 +113,23 @@
 |  :--:|  :--  | :--  | :-- |:--|:--|
 |  1| downloadFile(url, type)|文件流方式下载文件 |url:string 文件下载链接 <br/>  type:string ("iframe","a") | |
 
-
-
 ### Others
 
 |序号| 方法名  | 说明  | 参数|返回值|e.g|
 |  :--:|  :--  | :--  | :-- |:--|:--|
 |  1| flow2str (val, type)|流量单位转换 |val:number 流量值 <br/>  type:string 流量单位 ("GB","MB","KB","B") |String|
-|  2| debounce (handle, delay)|防抖函数 |handle:function 要进行防抖的函数 <br/>  delay:number 设定的时间区间|function|
-|  3| throttle (handle, delay, immediately)|函数节流 |handle:function 要进行节流的函数 <br/>  delay:number 时间区间 <br/>immediately:boolean 是否要进行立即执行版本的节流 |function|
-
+|  2| debounce (handle, delay)|防抖函数 |handle:function 要进行防抖的函数 <br/>  delay:number 设定的时间区间|Function|
+|  3| throttle (handle, delay, immediately)|函数节流 |handle:function 要进行节流的函数 <br/>  delay:number 时间区间 <br/>immediately:boolean 是否要进行立即执行版本的节流 |Function|
+|  4| sleep(ms,arg)|倒计时 |ms:number 倒计时毫秒值 <br/> arg:any 倒计时结束返回的数据  |Promise|
 
 ## RYAN 👾
 
 ```json
 _________________________________   ________________________________
 __  ____/_  __ \__  __ \__  ____/   ___  __ )__  ____/_  ___/__  __/
-_  /    _  / / /_  / / /_  __/      __  __  |_  __/  _____ \__  /   
-/ /___  / /_/ /_  /_/ /_  /___      _  /_/ /_  /___  ____/ /_  /    
-\____/  \____/ /_____/ /_____/      /_____/ /_____/  /____/ /_/     
+_  /    _  / / /_  / / /_  __/      __  __  |_  __/  _____ \__  /
+/ /___  / /_/ /_  /_/ /_  /___      _  /_/ /_  /___  ____/ /_  /
+\____/  \____/ /_____/ /_____/      /_____/ /_____/  /____/ /_/
 
 __ _____ ________________  _____________   ___  ___  ______ _____ __
 __ _____ _________  __ \ \/ /__    |__  | / /  __ / _______ _____ __

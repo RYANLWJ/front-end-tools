@@ -36,8 +36,9 @@ var Others = __webpack_require__(149);
 var Curry = __webpack_require__(150);
 var Download = __webpack_require__(151);
 var Http = __webpack_require__(152);
+var Tip = __webpack_require__(155);
 
-module.exports = (0, _extends3.default)({}, Api, Arr, Dom, Num, Obj, Str, Url, Validate, Explorer, Images, Others, Curry, Download, Http);
+module.exports = (0, _extends3.default)({}, Api, Arr, Dom, Num, Obj, Str, Url, Validate, Explorer, Images, Others, Curry, Download, Http, Tip);
 
 /***/ }),
 /* 1 */
@@ -2829,6 +2830,26 @@ var getArrEntries = function getArrEntries(arr, callback) {
   }
 };
 
+/**
+ * 乱序（洗牌算法）
+ *
+ * @param {Array} arr 数组
+ * @returns {Array} 经过随机乱序后的数组
+ */
+var shuffle = function shuffle() {
+  var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+  var cursor = arr.length;
+
+  while (--cursor) {
+    var random = Math.floor(Math.random() * cursor);
+    var _ref4 = [arr[random], arr[cursor]];
+    arr[cursor] = _ref4[0];
+    arr[random] = _ref4[1];
+  }
+
+  return arr;
+};
 module.exports = {
   getRowByVal: getRowByVal,
   cLV: cLV,
@@ -2853,7 +2874,8 @@ module.exports = {
   setUnion: setUnion,
   arrayUnique2: arrayUnique2,
   setUnionByKey: setUnionByKey,
-  getArrEntries: getArrEntries
+  getArrEntries: getArrEntries,
+  shuffle: shuffle
 };
 
 /***/ }),
@@ -3704,43 +3726,43 @@ var getBoxSpec = function getBoxSpec(key, el) {
   var _cat;
 
   var res = [];
-  var cat = (_cat = {}, (0, _defineProperty3.default)(_cat, '网页可见区域宽', function _() {
+  var cat = (_cat = {}, (0, _defineProperty3.default)(_cat, "网页可见区域宽", function _() {
     return document.body.clientWidth;
-  }), (0, _defineProperty3.default)(_cat, 'vw', function vw() {
+  }), (0, _defineProperty3.default)(_cat, "vw", function vw() {
     return document.body.clientWidth;
-  }), (0, _defineProperty3.default)(_cat, '网页可见区域高', function _() {
+  }), (0, _defineProperty3.default)(_cat, "网页可见区域高", function _() {
     return document.body.clientHeight;
-  }), (0, _defineProperty3.default)(_cat, 'vh', function vh() {
+  }), (0, _defineProperty3.default)(_cat, "vh", function vh() {
     return document.body.clientHeight;
-  }), (0, _defineProperty3.default)(_cat, '网页被卷去的高', function _() {
+  }), (0, _defineProperty3.default)(_cat, "网页被卷去的高", function _() {
     return document.body.scrollTop;
-  }), (0, _defineProperty3.default)(_cat, 'pst', function pst() {
+  }), (0, _defineProperty3.default)(_cat, "pst", function pst() {
     return document.body.scrollTop;
-  }), (0, _defineProperty3.default)(_cat, '网页被卷去的左', function _() {
+  }), (0, _defineProperty3.default)(_cat, "网页被卷去的左", function _() {
     return document.body.scrollLeft;
-  }), (0, _defineProperty3.default)(_cat, 'psl', function psl() {
+  }), (0, _defineProperty3.default)(_cat, "psl", function psl() {
     return document.body.scrollLeft;
-  }), (0, _defineProperty3.default)(_cat, '目标滚动高度', function _() {
+  }), (0, _defineProperty3.default)(_cat, "目标滚动高度", function _() {
     return el ? document.querySelector(el).scrollTop : warn();
-  }), (0, _defineProperty3.default)(_cat, 'st', function st() {
+  }), (0, _defineProperty3.default)(_cat, "st", function st() {
     return el ? document.querySelector(el).scrollTop : warn();
-  }), (0, _defineProperty3.default)(_cat, '目标滚动的左', function _() {
+  }), (0, _defineProperty3.default)(_cat, "目标滚动的左", function _() {
     return el ? document.querySelector(el).scrollLeft : warn();
-  }), (0, _defineProperty3.default)(_cat, 'sl', function sl() {
+  }), (0, _defineProperty3.default)(_cat, "sl", function sl() {
     return el ? document.querySelector(el).scrollLeft : warn();
-  }), (0, _defineProperty3.default)(_cat, '高', function _() {
+  }), (0, _defineProperty3.default)(_cat, "高", function _() {
     return el ? document.querySelector(el).clientHeight : warn();
-  }), (0, _defineProperty3.default)(_cat, 'h', function h() {
+  }), (0, _defineProperty3.default)(_cat, "h", function h() {
     return el ? document.querySelector(el).clientHeight : warn();
-  }), (0, _defineProperty3.default)(_cat, '宽', function _() {
+  }), (0, _defineProperty3.default)(_cat, "宽", function _() {
     return el ? document.querySelector(el).clientWidth : warn();
-  }), (0, _defineProperty3.default)(_cat, 'w', function w() {
+  }), (0, _defineProperty3.default)(_cat, "w", function w() {
     return el ? document.querySelector(el).clientWidth : warn();
   }), _cat);
-  if (typeof key === 'string') {
+  if (typeof key === "string") {
     return cat[key] ? cat[key]() : null;
   }
-  if ((typeof key === 'undefined' ? 'undefined' : (0, _typeof3.default)(key)) === 'object' && key.constructor === Array && key.length > 0) {
+  if ((typeof key === "undefined" ? "undefined" : (0, _typeof3.default)(key)) === "object" && key.constructor === Array && key.length > 0) {
     for (var i = 0; i < key.length; i++) {
       cat[key[i]] && res.push(cat[key[i]]());
     }
@@ -3877,7 +3899,7 @@ var getScrollHeight = function getScrollHeight() {
 //浏览器视口的高度
 var getWindowHeight = function getWindowHeight() {
   var windowHeight = 0;
-  if (document.compatMode == 'CSS1Compat') {
+  if (document.compatMode == "CSS1Compat") {
     windowHeight = document.documentElement.clientHeight;
   } else {
     windowHeight = document.body.clientHeight;
@@ -3885,6 +3907,408 @@ var getWindowHeight = function getWindowHeight() {
   return windowHeight;
 };
 
+function $() {
+  return document.getElementById(arguments[0]);
+}
+
+/**
+ * 得到上一个元素
+ * @param {Object} elem
+ */
+function prev(elem) {
+  do {
+    elem = elem.previousSibling;
+  } while (elem && elem.nodeType != 1);
+  return elem;
+}
+
+/**
+ * 得到下一个元素
+ * @param {Object} elem
+ */
+function next(elem) {
+  do {
+    elem = elem.nextSibling;
+  } while (elem && elem.nodeType != 1);
+  return elem;
+}
+
+/**
+ * 得到第一个元素
+ * @param {Object} elem
+ */
+function first(elem) {
+  elem = elem.firstChild;
+  return elem && elem.nodeType != 1 ? next(elem) : elem;
+}
+
+/**
+ * 得到最后一个元素
+ * @param {Object} elem
+ */
+function last(elem) {
+  elem = elem.lastChild;
+  return elem && elem.nodeType != 1 ? prev(elem) : elem;
+}
+
+/**
+ * 得到父元素
+ * @param {Object} elem
+ * @param {Number} num 需要寻找的父级级别
+ */
+function parent(elem, num) {
+  num = num || 1;
+  for (var i = 0; i < num; i++) {
+    if (elem != null) elem = elem.parentNode; //原书中这块有错
+  }
+  return elem;
+}
+
+/**
+ * 得到相关name元素
+ * @param {String} name
+ * @param {Object} elem
+ */
+function tag(name, elem) {
+  return (elem || document).getElementsByTagName(name);
+}
+
+/**
+ * 根据tag寻找
+ * @param {String} name
+ * @param {String} type
+ */
+function hasClass(name, type) {
+  var r = [];
+  var re = new RegExp("(^|\\s)" + name + "(\\s|$)");
+  var e = document.getElementsByTagName(type || "*");
+  for (var i = 0; i < e.length; i++) {
+    if (re.test(e[i].className)) {
+      r.push(e[i]);
+    }
+  }
+  return r;
+  //http://www.cnblogs.com/rubylouvre/archive/2009/09/01/1557765.html //司徒兄有不同的看法
+}
+
+/**
+ * 获取元素文本
+ * @param {Object} e
+ */
+function text(e) {
+  var t = "";
+  e = e.childNodes || e;
+  for (var i = 0; i < e.length; i++) {
+    //如果不是元素，则追加其文本值
+    t += e[i].nodeType != 1 ? e[i].nodeValue : text(e[i].childNodes);
+  }
+  return t;
+}
+
+/**
+ *
+ * @param {String} elem
+ * @param {String} name
+ * @param {String} value
+ */
+function attr(elem, name, value) {
+  if (!name || name.constructor != String) {
+    return "";
+  }
+
+  //检查name的属性是否在怪异命名情形中
+  name = { for: "htmlFor", class: "className" }[name] || name;
+
+  if (typeof value != "undefined") {
+    elem[name] = value;
+
+    if (elem.setAttribute) {
+      elem.setAttribute(name, value);
+    }
+  }
+
+  return elem[name] || elem.getAttribute(name) || "";
+}
+
+/**
+ * 在另一个元素之前插件元素
+ * @param {Object} parent
+ * @param {Object} before
+ * @param {String} elem
+ */
+function before(parent, before, elem) {
+  if (elem == null) {
+    elem = before;
+    before = parent;
+    parent = before.parentNode;
+  }
+
+  //获取元素的新数组
+  var elems = checkElem(elem);
+
+  //向后遍历
+  for (var i = elems.length; i >= 0; i--) {
+    parent.insertBefore(elems[i], before);
+  }
+}
+
+/**
+ * 创建元素
+ * @param {Object} elem
+ */
+function create(elem) {
+  //测试是否用命名空间来创建新的元素
+  return document.createElementNS ? document.createElementNS("http://www.w3.org/1999/xhtml", elem) : document.cateElement(elem);
+}
+
+/**
+ * before 辅助函数
+ * @param {Object} elem
+ */
+function checkElem(a) {
+  var r = [];
+  if (a.constructor != Array) {
+    a = [a];
+  }
+  for (var i = 0; i < a.length; i++) {
+    //如果是字符串
+    if (a[i].constructor == String) {
+      //用一个临时元素来存放HTML
+      var div = document.createElement("div");
+      div.innerHTML = a[i];
+      //提取DOM结构到临时的div中
+      for (var j = 0; j < div.childNodes.length; j++) {
+        r[r.length] = div.childNodes[j];
+      }
+    } else if (a[i].length) {
+      //如果它是数组
+      //假定DOM节点数组
+      for (var j = 0; j < a[i].length; j++) {
+        r[r.length] = a[i][j];
+      }
+    } else {
+      //否则假定是DOM节点
+      r[r.length] = a[i];
+    }
+  }
+
+  return r;
+}
+
+//此方法我已修改与原文中有异
+/**
+ * 添加元素 (如果只有一个参数(无elem)，则直接添加到document.body上)
+ * @param {Object} elem
+ * @param {Object} parent
+ */
+function append(parent, elem) {
+  if (elem == null) {
+    elem = parent;
+    parent = null;
+  }
+
+  //获取元素数组
+  var elems = checkElem(elem);
+  for (var i = 0; i < elems.length; i++) {
+    (parent || document.body).appendChild(elems[i]);
+  }
+}
+
+/**
+ * 删除独立的DOM
+ * @param {Object} elem
+ */
+function remove(elem) {
+  if (elem) {
+    elem.parentNode.removeChild(elem);
+  }
+}
+
+/**
+ * 删除一个节点的所有子节点
+ * @param {Object} elem
+ */
+function empty(elem) {
+  while (elem.firstChild) {
+    remove(elem.firstChild);
+  }
+}
+
+/**
+ * 阻止事件冒泡
+ * @param {Object} e
+ */
+function stopBubble(e) {
+  if (e && e.stopPropagation) {
+    e.stopPropagation();
+  } else {
+    window.event.cancelBubble = true;
+  }
+}
+
+function stopDefault(e) {
+  if (e && e.preventDefault) {
+    e.preventDefault();
+  } else {
+    window.event.returnValue = false;
+  }
+  return false;
+}
+
+/**
+ * 得到外链样式
+ * @param {Object} elem
+ * @param {String} name
+ */
+function getStyle(elem, name) {
+  if (elem.style[name]) {
+    return elem.style[name];
+  } else if (elem.currentStyle) {
+    //如果ie
+    return elem.currentStyle[name];
+  } else if (document.defaultView && document.defaultView.getComputedStyle) {
+    //如果是不是w3c方法
+    name = name.replace(/([A-Z])/g, "-$1");
+    name = name.toLowerCase();
+
+    //获取样式
+    var s = document.defaultView.getComputedStyle(elem, "");
+    return s && s.getPropertyValue(name);
+  } else {
+    return null;
+  }
+}
+
+/**
+ * 获取元素的x位置
+ * @param {String} elem
+ */
+function pageX(elem) {
+  return elem.offsetParent ? elem.offsetLeft + pageX(elem.offsetParent) : elem.offsetLeft;
+}
+
+/**
+ * 获取元素的Y位置
+ * @param {String} elem
+ */
+function pageY(elem) {
+  return elem.offsetParent ? elem.offsetTop + pageY(elem.offsetParent) : elem.offsetTop;
+}
+
+/**
+ * 获取元素相对于父级的x位置
+ * @param {String} elem
+ */
+function parentX(elem) {
+  return elem.parentNode == elem.offsetParent ? elem.offsetLeft : pageX(elem) - pageX(elem.parentNode);
+}
+
+/**
+ * 获取元素相对于父级的Y位置
+ * @param {String} elem
+ */
+function parentY(elem) {
+  return elem.parentNode == elem.offsetParent ? elem.offsetTop : pageY(elem) - pageY(elem.parentNode);
+}
+
+/**
+ * 查找元素的左端位置
+ * @param {Object} elem
+ */
+function posX(elem) {
+  return parseInt(getStyle(elem, "left"));
+}
+
+/**
+ * 查找元素的顶端位置
+ * @param {Object} elem
+ */
+function posY(elem) {
+  return parseInt(getStyle(elem, "top"));
+}
+
+/**
+ * 设置元素水平位置
+ * @param {Object} elem
+ * @param {Object} pos
+ */
+function setX(elem, pos) {
+  elem.style.left = pos + "px";
+}
+
+/**
+ * 设置垂直水平位置
+ * @param {Object} elem
+ * @param {Object} pos
+ */
+function setY(elem, pos) {
+  elem.style.top = pos + "px";
+}
+
+/**
+ * 获取高度
+ * @param {Object} elem
+ */
+function getHeight(elem) {
+  return parseInt(getStyle(elem, "height"));
+}
+
+/**
+ * 获取宽度
+ * @param {Object} elem
+ */
+function getWidth(elem) {
+  return parseInt(getStyle(elem, "width"));
+}
+
+/**
+ * 得到完整的高度，就算对象已隐藏
+ * @param {Object} elem
+ */
+function fullHeight(elem) {
+  //如果元素显示
+  if (getStyle(elem, "display") != "none") {
+    return elem.offsetHeight || getHeight(elem);
+  }
+
+  //如果不显示，则复原css
+  var old = resetCss(ele, {
+    display: "",
+    visibility: "hidden",
+    position: "absolute"
+  });
+
+  var h = elem.clientHeight || getHeight(elem);
+  restoreCss(elem, old);
+
+  return h;
+}
+
+/**
+ * 恢复原有设置
+ * @param {String} elem
+ * @param {Object} prop
+ */
+function resetCss(elem, prop) {
+  var old = {};
+
+  for (var i in prop) {
+    old[i] = prop[i];
+    elem.style[i] = prop[i];
+  }
+  return old;
+}
+
+/**
+ *
+ * @param {String} elem
+ * @param {Object} old
+ */
+function restoreCss(elem, old) {
+  for (var i in old) {
+    elem.style[i] = old[i];
+  }
+}
 module.exports = {
   getBoxSpec: getBoxSpec,
   getEl: getEl,
@@ -3892,7 +4316,6 @@ module.exports = {
   getScrollTop: getScrollTop,
   getScrollHeight: getScrollHeight,
   getWindowHeight: getWindowHeight
-
 };
 
 /***/ }),
@@ -4070,7 +4493,32 @@ var convertNum2Str = function convertNum2Str(obj, keys) {
   return _obj;
 };
 
+// /**
+//  *
+//  * @description 错误信息转换
+//  * @param {object} obj {a:'不能为空' ,b:'资源错误'}
+//  * @return {array} ['a:']
+//  */
+// const formatedErrorMsgs = (obj) => Object.entries(result).map(([key, value]) => key + ":" + value);
+
+
+/**
+ * 筛选对象的key，浅拷贝对象
+ *
+ * @param {object} obj 原始对象
+ * @param {string[]} arr 需保留的key
+ * @returns {object} 处理后的对象
+ * @example
+ * pick({a:1, b:2, c:3}, ['b', 'c']) => {b:2, c:3}
+ */
+function pick(obj, arr) {
+  return arr.reduce(function (acc, cur) {
+    cur in obj && (acc[cur] = obj[cur]);
+    return acc;
+  }, {});
+}
 module.exports = {
+  pick: pick,
   objectFilter: objectFilter,
   clearObj: clearObj,
   deepClone: deepClone,
@@ -4273,7 +4721,57 @@ var wrapStringBy = function wrapStringBy(keyString, str) {
     return firstClip + strList;
   }
 };
+
+/**
+ *
+ * @description 去除空格 type 1-所有空格 2-前后空格 3-前空格 4-后空格
+ * @param {*} str
+ * @param {*} type
+ * @return {*} 
+ */
+function trim(str, type) {
+  switch (type) {
+    case 1:
+      return str.replace(/\s+/g, "");
+    case 2:
+      return str.replace(/(^\s*)|(\s*$)/g, "");
+    case 3:
+      return str.replace(/(^\s*)/g, "");
+    case 4:
+      return str.replace(/(\s*$)/g, "");
+    default:
+      return str;
+  }
+}
+
+/**
+ * 转换 _ 或 - 为驼峰形式
+ *
+ * @param {string} str 原始字符串
+ * @returns {string} CamelCase 形式
+ */
+function camelize(str) {
+  if (str.indexOf('-') < 0 && str.indexOf('_') < 0) {
+    return str;
+  }
+  return str.replace(/[-_][^-_]/g, function (match) {
+    return match.charAt(1).toUpperCase();
+  });
+}
+
+/**
+ * 防XSS攻击过滤
+ *
+ * @param {string} str 原始字符串
+ * @returns {string} 过滤后字符串
+ */
+function xssFilter(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+}
 module.exports = (_module$exports = {
+  xssFilter: xssFilter,
+  camelize: camelize,
+  trim: trim,
   getStrCount: getStrCount,
   trimSpace: trimSpace
 }, (0, _defineProperty3.default)(_module$exports, "getStrCount", getStrCount), (0, _defineProperty3.default)(_module$exports, "addZero", addZero), (0, _defineProperty3.default)(_module$exports, "getPlaceholders", getPlaceholders), (0, _defineProperty3.default)(_module$exports, "insertStr", insertStr), (0, _defineProperty3.default)(_module$exports, "getStrIndexList", getStrIndexList), (0, _defineProperty3.default)(_module$exports, "splitStringByKey", splitStringByKey), (0, _defineProperty3.default)(_module$exports, "wrapStringBy", wrapStringBy), _module$exports);
@@ -4678,12 +5176,19 @@ module.exports = {
 
 /***/ }),
 /* 149 */
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
+var _promise = __webpack_require__(74);
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _arguments = arguments;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  *
  * @description 流量单位转换
@@ -4772,10 +5277,23 @@ var throttle = function throttle(handle, delay, immediately) {
   }
 };
 
+/**
+ *
+ *@description 用promise封装倒计时
+ * @param {number} ms 倒计时毫秒
+ * @param {any} arg 倒计时结束返回的数据
+ */
+var sleep = function sleep(ms, arg) {
+  return new _promise2.default(function (resolve) {
+    return setTimeout(resolve, ms, arg);
+  });
+};
+
 module.exports = {
   flow2str: flow2str,
   debounce: debounce,
-  throttle: throttle
+  throttle: throttle,
+  sleep: sleep
 };
 
 /***/ }),
@@ -5006,6 +5524,99 @@ exports.default = function () {
     return Constructor;
   };
 }();
+
+/***/ }),
+/* 155 */
+/***/ ((module) => {
+
+"use strict";
+
+
+var getTimeStr = function getTimeStr(timestr) {
+  var setTime = function setTime(num) {
+    return num < 10 ? "0" + num : num;
+  };
+  var _date = timestr ? new Date(timestr) : new Date();
+  var _month = setTime(_date.getMonth() + 1);
+  var _day = setTime(_date.getDate());
+  var _hour = setTime(_date.getHours());
+  var _minute = setTime(_date.getMinutes());
+  var _second = setTime(_date.getSeconds());
+
+  return _date.getFullYear() + "/" + _month + "/" + _day + " " + _hour + ":" + _minute + ":" + _second;
+};
+
+var colors = {
+  end: "%s\x1b[0m",
+  Reset: "\x1b[0m",
+  Bright: "\x1b[1m",
+  Dim: "\x1b[2m",
+  Underscore: "\x1b[4m",
+  Blink: "\x1b[5m",
+  Reverse: "\x1b[7m",
+  Hidden: "\x1b[8m",
+  FgBlack: "\x1b[30m",
+  FgRed: "\x1b[31m",
+  FgGreen: "\x1b[32m",
+  FgYellow: "\x1b[33m",
+  FgBlue: "\x1b[34m",
+  FgMagenta: "\x1b[35m",
+  FgCyan: "\x1b[36m",
+  FgWhite: "\x1b[37m",
+  BgBlack: "\x1b[40m",
+  BgRed: "\x1b[41m",
+  BgGreen: "\x1b[42m",
+  BgYellow: "\x1b[43m",
+  BgBlue: "\x1b[44m",
+  BgMagenta: "\x1b[45m",
+  BgCyan: "\x1b[46m",
+  BgWhite: "\x1b[47m"
+};
+
+colors.get = function (type) {
+  var THIS = this;
+  return THIS[type] + THIS.end;
+};
+
+var Tip = {
+  safe: function safe(info, timebool) {
+    if (!info) return false;
+
+    console.log(colors.get("FgGreen"), (timebool ? getTimeStr() + ":" : "") + info);
+  },
+  log: function log(info, timebool) {
+    // normal log
+    if (!info) return false;
+
+    console.log(timebool ? getTimeStr() + ":" : "" + info);
+  },
+  error: function error(info, timebool) {
+    // error log
+    if (!info) return false;
+
+    console.log(colors.get("FgRed"), (timebool ? getTimeStr() + ":" : "") + info);
+  },
+  strongError: function strongError(info, timebool) {
+    // strong error log
+    if (!info) return false;
+
+    console.log(colors.get("BgRed"), (timebool ? getTimeStr() + ":" : "") + info);
+  },
+  warn: function warn(info, timebool) {
+    // warn log
+    if (!info) return false;
+
+    console.log(colors.get("FgYellow"), (timebool ? getTimeStr() + ":" : "") + info);
+  },
+  strongWarn: function strongWarn(info, timebool) {
+    // strong warn log
+    if (!info) return false;
+
+    console.log(colors.get("BgYellow"), (timebool ? getTimeStr() + ":" : "") + info);
+  }
+};
+
+module.exports = Tip;
 
 /***/ })
 /******/ 	]);

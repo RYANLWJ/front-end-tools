@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../dist/index.js"></script>
+<script src="../lib/methodTypes/Dom.js"></script>
+
+<body>
+  <script>
+      const div = create("div")
+      div.style.width ="100px"
+      div.style.height = "200px"
+      div.innerHTML ="hello world"
+      div.style.backgroundColor = "red"
+      append(div)
+      console.log(append);
+      console.log(checkElem(div));
+      let h = getHeight(div)
+      console.log('h: ', h);
+      setTimeout(()=>{
+        remove(div) //删除独立的DOM
+      },10000)
+  </script>
+</body>
+</html>
