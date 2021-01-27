@@ -13,6 +13,7 @@ const Curry = require("../lib/methodTypes/Curry.js");
 const Download = require("../lib/methodTypes/Download.js");
 const Http = require("../lib/methodTypes/Http.js");
 const Tip = require("../lib/methodTypes/Tip.js");
+const Functions = require("../lib/methodTypes/Functions.js");
 
 const methods = {
   Api,
@@ -30,6 +31,7 @@ const methods = {
   Download,
   Http,
   Tip,
+  Functions
 };
 
 const allMethodsRecord = Object.entries(methods)

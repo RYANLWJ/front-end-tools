@@ -29,6 +29,8 @@
 | 20| getIntersectionItems(arr, sum)  | 获取两个数组的交集项|arr1:array 第一个数组<br/>arr2:array 第二个数组|array|
 |  21| setUnion(arr1, arr2)  | 使两个数组并集|arr1:array 第一个数组<br/>arr2:array 第二个数组|array|
 |  22| arrayUnique2(arr, name) | 数组对象去重|arr:array 数组对象<br/>name:string 筛选键|array|
+|  23| getIntersectionByKey(arr1, arr2, key)) | 获取数组对象交集|arr1:array 数组对象1<br/>arr2:array 数组对象2 <br/> key:string 筛选键|array|
+|  24| fullInclude(target,src,key)) | 判断target项内容是否全部都在src项能找到|target:array 目标数组对象<br/>src:array 源数组对象 <br/> key:string 筛选键|boolean|
 
 ### Object
 
@@ -39,6 +41,7 @@
 |  3| objectFilter(options)|过滤对象里空的键值对 |options: 基准对象 |Object|
 |  4| replaceKeys(obj, keyOrig, keyCurr)|转换对象指定的 key 名 |obj:object <br/>keyOrig:string 要被替换的原始键名 <br/>keyCur:string 新的键名|Object|
 |  5| convertNum2Str(obj, keys)|把对象里的属性值为数字类型的转换成字符串类型|obj:object <br/>keys:array 要进行转换的键集合|Object|
+|  6| pick(obj, arr)|筛选对象的key，浅拷贝对象|obj:object <br/>arr:array 键集合|Object|
 
 <!-- | selector(from, selectors, keys = null)|从对象中检索出给定选择器指定的一组属性 |？|？| -->
 

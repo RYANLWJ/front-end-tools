@@ -7,22 +7,42 @@
 </head>
 <script src="../dist/index.js"></script>
 <script src="../lib/methodTypes/Dom.js"></script>
+<style>
 
+  #cat{
+    line-height: 30px;
+    padding:20px;
+    /* position: relative; */
+  }
+
+  #menu{
+    position: relative;
+  }
+
+
+
+</style>
 <body>
+    <ul id="menu">
+      <li>1</li>
+      <li>2</li>
+      <li id="cat" >cat</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
   <script>
+      const cat = $("cat")
       const div = create("div")
       div.style.width ="100px"
       div.style.height = "200px"
       div.innerHTML ="hello world"
       div.style.backgroundColor = "red"
-      append(div)
-      console.log(append);
-      console.log(checkElem(div));
-      let h = getHeight(div)
-      console.log('h: ', h);
-      setTimeout(()=>{
-        remove(div) //删除独立的DOM
-      },10000)
+      append(cat,div)
+      console.log(parentX(div));
+    setX(div,20)
+      console.log(posX(div));
+  
+    
   </script>
 </body>
 </html>

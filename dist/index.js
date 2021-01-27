@@ -37,8 +37,9 @@ var Curry = __webpack_require__(150);
 var Download = __webpack_require__(151);
 var Http = __webpack_require__(152);
 var Tip = __webpack_require__(155);
+var Functions = __webpack_require__(156);
 
-module.exports = (0, _extends3.default)({}, Api, Arr, Dom, Num, Obj, Str, Url, Validate, Explorer, Images, Others, Curry, Download, Http, Tip);
+module.exports = (0, _extends3.default)({}, Api, Arr, Dom, Num, Obj, Str, Url, Validate, Explorer, Images, Others, Curry, Download, Http, Tip, Functions);
 
 /***/ }),
 /* 1 */
@@ -2739,7 +2740,7 @@ var findSum = function findSum(arr, sum) {
 
 /**
  *
- *@description 获取两个数组的交集项
+ *@description 获取两个普通数组的交集项
  * @param {*} arr1
  * @param {*} arr2
  * @return {*}
@@ -2767,7 +2768,7 @@ var setUnion = function setUnion(arr1, arr2) {
  * @param {*} orig
  * @param {*} curr
  * @param {*} key
- * @return {*} 
+ * @return {*}
  */
 var setUnionByKey = function setUnionByKey(orig, curr, key) {
   if (orig.length == 0) return curr;
@@ -2850,6 +2851,54 @@ var shuffle = function shuffle() {
 
   return arr;
 };
+
+/**
+ *
+ *@description 获取数组对象交集
+ * @param {*} arr1
+ * @param {*} arr2
+ * @param {*} key
+ * @return {*}
+ */
+var getIntersectionByKey = function getIntersectionByKey(arr1, arr2, key) {
+  var ids = arr1.map(function (item) {
+    return item[key];
+  });
+  return arr2.filter(function (v) {
+    return ~ids.indexOf(v[key]);
+  });
+};
+
+/**
+ *
+ * @description 判断target项内容是否全部都在src项能找到
+ * @param {array} target
+ * @param {array} src
+ * @param {string} key
+ * @return {boolean}
+ */
+var fullInclude = function fullInclude(target, src, key) {
+  var arr1 = target;
+  var arr2 = src;
+  var lg = arr1.length;
+  var intersectionLists = [];
+  if (key) {
+    var ids = arr1.map(function (item) {
+      return item[key];
+    });
+
+    intersectionLists = arr2.filter(function (v) {
+      return ~ids.indexOf(v[key]);
+    });
+    return lg === intersectionLists.length;
+  } else {
+    intersectionLists = [].concat((0, _toConsumableArray3.default)(new _set2.default([].concat((0, _toConsumableArray3.default)(arr1)).filter(function (x) {
+      return new _set2.default(arr2).has(x);
+    }))));
+  }
+  return lg === intersectionLists.length;
+};
+
 module.exports = {
   getRowByVal: getRowByVal,
   cLV: cLV,
@@ -2875,7 +2924,9 @@ module.exports = {
   arrayUnique2: arrayUnique2,
   setUnionByKey: setUnionByKey,
   getArrEntries: getArrEntries,
-  shuffle: shuffle
+  shuffle: shuffle,
+  getIntersectionByKey: getIntersectionByKey,
+  fullInclude: fullInclude
 };
 
 /***/ }),
@@ -3716,6 +3767,8 @@ var _defineProperty2 = __webpack_require__(135);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
+var _Dom;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
@@ -4309,13 +4362,32 @@ function restoreCss(elem, old) {
     elem.style[i] = old[i];
   }
 }
-module.exports = {
+
+var Dom = (_Dom = {
   getBoxSpec: getBoxSpec,
   getEl: getEl,
   getstyle: getstyle,
   getScrollTop: getScrollTop,
   getScrollHeight: getScrollHeight,
-  getWindowHeight: getWindowHeight
+  getWindowHeight: getWindowHeight,
+  $: $,
+  prev: prev,
+  next: next,
+  first: first,
+  last: last,
+  parent: parent,
+  tag: tag,
+  hasClass: hasClass,
+  text: text,
+  attr: attr,
+  before: before,
+  create: create,
+  checkElem: checkElem,
+  append: append
+}, (0, _defineProperty3.default)(_Dom, "checkElem", checkElem), (0, _defineProperty3.default)(_Dom, "remove", remove), (0, _defineProperty3.default)(_Dom, "empty", empty), (0, _defineProperty3.default)(_Dom, "stopBubble", stopBubble), (0, _defineProperty3.default)(_Dom, "stopDefault", stopDefault), (0, _defineProperty3.default)(_Dom, "getStyle", getStyle), (0, _defineProperty3.default)(_Dom, "pageX", pageX), (0, _defineProperty3.default)(_Dom, "pageY", pageY), (0, _defineProperty3.default)(_Dom, "parentX", parentX), (0, _defineProperty3.default)(_Dom, "parentY", parentY), (0, _defineProperty3.default)(_Dom, "posX", posX), (0, _defineProperty3.default)(_Dom, "posY", posY), (0, _defineProperty3.default)(_Dom, "setX", setX), (0, _defineProperty3.default)(_Dom, "setY", setY), (0, _defineProperty3.default)(_Dom, "getHeight", getHeight), (0, _defineProperty3.default)(_Dom, "getWidth", getWidth), (0, _defineProperty3.default)(_Dom, "fullHeight", fullHeight), (0, _defineProperty3.default)(_Dom, "resetCss", resetCss), (0, _defineProperty3.default)(_Dom, "restoreCss", restoreCss), _Dom);
+
+module.exports = {
+  Dom: Dom
 };
 
 /***/ }),
@@ -5617,6 +5689,45 @@ var Tip = {
 };
 
 module.exports = Tip;
+
+/***/ }),
+/* 156 */
+/***/ ((module) => {
+
+"use strict";
+
+
+/**
+ * 函数组合
+ * 可将 fn1(fn2(fn3(fn4(x)))) 这种嵌套的调用方式
+ * 改成 compose(fn1,fn2,fn3,fn4)(x) 的方式调用
+ *
+ * @param  {...Function} funcs 方法
+ * @returns {Function} 组合结果方法
+ */
+function compose() {
+  for (var _len = arguments.length, funcs = Array(_len), _key = 0; _key < _len; _key++) {
+    funcs[_key] = arguments[_key];
+  }
+
+  if (funcs.length === 0) {
+    return function (arg) {
+      return arg;
+    };
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0];
+  }
+
+  return funcs.reduce(function (a, b) {
+    return function () {
+      return a(b.apply(undefined, arguments));
+    };
+  });
+}
+
+module.exports = { compose: compose };
 
 /***/ })
 /******/ 	]);
