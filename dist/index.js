@@ -27,17 +27,17 @@ var Arr = __webpack_require__(96);
 var Dom = __webpack_require__(139);
 var Num = __webpack_require__(140);
 var Obj = __webpack_require__(141);
-var Str = __webpack_require__(144);
-var Url = __webpack_require__(145);
-var Validate = __webpack_require__(146);
-var Explorer = __webpack_require__(147);
-var Images = __webpack_require__(148);
-var Others = __webpack_require__(149);
-var Curry = __webpack_require__(150);
-var Download = __webpack_require__(151);
-var Http = __webpack_require__(152);
-var Tip = __webpack_require__(155);
-var Functions = __webpack_require__(156);
+var Str = __webpack_require__(151);
+var Url = __webpack_require__(152);
+var Validate = __webpack_require__(153);
+var Explorer = __webpack_require__(154);
+var Images = __webpack_require__(155);
+var Others = __webpack_require__(156);
+var Curry = __webpack_require__(157);
+var Download = __webpack_require__(158);
+var Http = __webpack_require__(159);
+var Tip = __webpack_require__(162);
+var Functions = __webpack_require__(163);
 
 module.exports = (0, _extends3.default)({}, Api, Arr, Dom, Num, Obj, Str, Url, Validate, Explorer, Images, Others, Curry, Download, Http, Tip, Functions);
 
@@ -4363,6 +4363,17 @@ function restoreCss(elem, old) {
   }
 }
 
+function getPosition(element) {
+  var offsety = 0;
+  offsety += element.offsetTop;
+  var offsetx = 0;
+  offsetx += element.offsetLeft;
+  if (element.offsetParent != null) {
+    getPosition(element.offsetParent);
+  }
+  return { Left: offsetx, Top: offsety };
+}
+
 var Dom = (_Dom = {
   getBoxSpec: getBoxSpec,
   getEl: getEl,
@@ -4422,6 +4433,14 @@ module.exports = {
 "use strict";
 
 
+var _slicedToArray2 = __webpack_require__(142);
+
+var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
+
+var _entries = __webpack_require__(146);
+
+var _entries2 = _interopRequireDefault(_entries);
+
 var _extends2 = __webpack_require__(1);
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -4434,7 +4453,7 @@ var _keys = __webpack_require__(122);
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _stringify = __webpack_require__(142);
+var _stringify = __webpack_require__(149);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -4565,14 +4584,21 @@ var convertNum2Str = function convertNum2Str(obj, keys) {
   return _obj;
 };
 
-// /**
-//  *
-//  * @description 错误信息转换
-//  * @param {object} obj {a:'不能为空' ,b:'资源错误'}
-//  * @return {array} ['a:']
-//  */
-// const formatedErrorMsgs = (obj) => Object.entries(result).map(([key, value]) => key + ":" + value);
+/**
+ *
+ * @description 错误信息转换
+ * @param {object} obj {a:'不能为空' ,b:'资源错误'}
+ * @return {array} ['a:']
+ */
+var formattedErrorMsgs = function formattedErrorMsgs(obj) {
+  return (0, _entries2.default)(result).map(function (_ref) {
+    var _ref2 = (0, _slicedToArray3.default)(_ref, 2),
+        key = _ref2[0],
+        value = _ref2[1];
 
+    return key + ":" + value;
+  });
+};
 
 /**
  * 筛选对象的key，浅拷贝对象
@@ -4596,17 +4622,135 @@ module.exports = {
   deepClone: deepClone,
   selector: selector,
   replaceKeys: replaceKeys,
-  convertNum2Str: convertNum2Str
+  convertNum2Str: convertNum2Str,
+  formattedErrorMsgs: formattedErrorMsgs
 };
 
 /***/ }),
 /* 142 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-module.exports = { "default": __webpack_require__(143), __esModule: true };
+"use strict";
+
+
+exports.__esModule = true;
+
+var _isIterable2 = __webpack_require__(143);
+
+var _isIterable3 = _interopRequireDefault(_isIterable2);
+
+var _getIterator2 = __webpack_require__(97);
+
+var _getIterator3 = _interopRequireDefault(_getIterator2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = (0, _getIterator3.default)(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if ((0, _isIterable3.default)(Object(arr))) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
 
 /***/ }),
 /* 143 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = { "default": __webpack_require__(144), __esModule: true };
+
+/***/ }),
+/* 144 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(56);
+__webpack_require__(44);
+module.exports = __webpack_require__(145);
+
+
+/***/ }),
+/* 145 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var classof = __webpack_require__(77);
+var ITERATOR = __webpack_require__(54)('iterator');
+var Iterators = __webpack_require__(48);
+module.exports = __webpack_require__(7).isIterable = function (it) {
+  var O = Object(it);
+  return O[ITERATOR] !== undefined
+    || '@@iterator' in O
+    // eslint-disable-next-line no-prototype-builtins
+    || Iterators.hasOwnProperty(classof(O));
+};
+
+
+/***/ }),
+/* 146 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = { "default": __webpack_require__(147), __esModule: true };
+
+/***/ }),
+/* 147 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(148);
+module.exports = __webpack_require__(7).Object.entries;
+
+
+/***/ }),
+/* 148 */
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+// https://github.com/tc39/proposal-object-values-entries
+var $export = __webpack_require__(5);
+var $entries = __webpack_require__(129)(true);
+
+$export($export.S, 'Object', {
+  entries: function entries(it) {
+    return $entries(it);
+  }
+});
+
+
+/***/ }),
+/* 149 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = { "default": __webpack_require__(150), __esModule: true };
+
+/***/ }),
+/* 150 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var core = __webpack_require__(7);
@@ -4617,7 +4761,7 @@ module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
 
 
 /***/ }),
-/* 144 */
+/* 151 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -4849,13 +4993,13 @@ module.exports = (_module$exports = {
 }, (0, _defineProperty3.default)(_module$exports, "getStrCount", getStrCount), (0, _defineProperty3.default)(_module$exports, "addZero", addZero), (0, _defineProperty3.default)(_module$exports, "getPlaceholders", getPlaceholders), (0, _defineProperty3.default)(_module$exports, "insertStr", insertStr), (0, _defineProperty3.default)(_module$exports, "getStrIndexList", getStrIndexList), (0, _defineProperty3.default)(_module$exports, "splitStringByKey", splitStringByKey), (0, _defineProperty3.default)(_module$exports, "wrapStringBy", wrapStringBy), _module$exports);
 
 /***/ }),
-/* 145 */
+/* 152 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var _stringify = __webpack_require__(142);
+var _stringify = __webpack_require__(149);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -5007,13 +5151,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 146 */
+/* 153 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var _stringify = __webpack_require__(142);
+var _stringify = __webpack_require__(149);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -5183,7 +5327,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 147 */
+/* 154 */
 /***/ ((module) => {
 
 "use strict";
@@ -5213,11 +5357,22 @@ var deviceVersions = function deviceVersions() {
 module.exports = { deviceVersions: deviceVersions };
 
 /***/ }),
-/* 148 */
-/***/ ((module) => {
+/* 155 */
+/***/ ((module, exports, __webpack_require__) => {
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.UPLOAD_PICTURE_CROP = exports.UPLOAD_PICTURE = undefined;
+
+var _promise = __webpack_require__(74);
+
+var _promise2 = _interopRequireDefault(_promise);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Convert an image
@@ -5246,8 +5401,129 @@ module.exports = {
   convertImgToBase64: convertImgToBase64
 };
 
+/**
+ * 图片base64转换 图片压缩
+ * @param  this
+ * @param  file
+ * @param  {boolean} 选参，默认压缩
+ * @param {Array}  选参，默认支持的图片类型 jpeg ,png ,bmp
+ * @param {Number}  选参，默认10M
+ * @param {Number}  选参，压缩图片目标宽度,默认413px
+ * @param {Number} 选参，压缩图片目标高度,默认626px
+ * @param {Number} 选参，导出的图片质量,默认值是0.85
+ * @date 2019/03/22
+ * @version 0.0.1
+ */
+var UPLOAD_PICTURE = exports.UPLOAD_PICTURE = function UPLOAD_PICTURE(obj, file) {
+  var zip = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var fileType = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : ['jpeg', 'png', 'bmp'];
+  var s = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 10;
+  var w = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 413;
+  var h = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 626;
+  var q = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0.85;
+
+  var that = obj;
+  return new _promise2.default(function (resolve, reject) {
+    // 限制图片大小
+    var isLt10M = file.size / 1024 / 1024 < s;
+
+    // 限制图片格式
+    var isFormat = 0;
+    for (var i = 0; i < fileType.length; i++) {
+      if ('image/' + fileType[i] === file.type) {
+        isFormat++;
+      }
+    }
+    var ft = fileType.join(',');
+    if (!isFormat) {
+      return that.$message.error("\u4E0A\u4F20\u5934\u50CF\u56FE\u7247\u4EC5\u9650\u4E8E " + ft + " \u683C\u5F0F!");
+    }
+
+    if (!isLt10M) {
+      that.$message.error("\u4E0A\u4F20\u5934\u50CF\u56FE\u7247\u5927\u5C0F\u4E0D\u80FD\u8D85\u8FC7 " + s + "MB!");
+      return false;
+    }
+
+    // 选择的文件是图片
+    if (file.type.indexOf('image') === 0) {
+      // 压缩图片需要的一些元素和对象
+      var reader = new FileReader();
+      // 创建一个img对象
+      var img = new Image();
+
+      reader.readAsDataURL(file);
+      // 文件base64化，以便获知图片原始尺寸
+      reader.onload = function (e) {
+        img.src = e.target.result;
+        if (!zip) {
+          resolve(img.src);
+        }
+      };
+
+      if (!zip) {
+        return false;
+      }
+
+      // base64地址图片加载完毕后执行
+      img.onload = function () {
+        // 缩放图片需要的canvas（也可以在DOM中直接定义canvas标签，这样就能把压缩完的图片不转base64也能直接显示出来）
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+
+        // 图片原始尺寸
+        var originWidth = this.width;
+        var originHeight = this.height;
+
+        // 最大尺寸限制，可通过设置宽高来实现图片压缩程度
+        var maxWidth = w;
+        var maxHeight = h;
+        // 目标尺寸
+        var targetWidth = originWidth;
+        var targetHeight = originHeight;
+        // 图片尺寸超过300x300的限制
+        if (originWidth > maxWidth || originHeight > maxHeight) {
+          if (originWidth / originHeight > maxWidth / maxHeight) {
+            // 更宽，按照宽度限定尺寸
+            targetWidth = maxWidth;
+            targetHeight = Math.round(maxWidth * (originHeight / originWidth));
+          } else {
+            targetHeight = maxHeight;
+            targetWidth = Math.round(maxHeight * (originWidth / originHeight));
+          }
+        }
+        // canvas对图片进行缩放
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        // 清除画布
+        context.clearRect(0, 0, targetWidth, targetHeight);
+        // 图片压缩
+        context.drawImage(img, 0, 0, targetWidth, targetHeight);
+        /* 第一个参数是创建的img对象；第二三个参数是左上角坐标，后面两个是画布区域宽高 */
+
+        // 压缩后的图片转base64 url
+        /* canvas.toDataURL(mimeType, qualityArgument),mimeType 默认值是'image/png';
+         * qualityArgument表示导出的图片质量，只有导出为jpeg和webp格式的时候此参数才有效，默认值是0.92 */
+        var newUrl = canvas.toDataURL('image/jpeg', q); // base64 格式
+        resolve(newUrl);
+      };
+    }
+  });
+};
+/**
+ * 图片base64转换 裁剪图片
+ * @param  myCroppa
+ */
+var UPLOAD_PICTURE_CROP = exports.UPLOAD_PICTURE_CROP = function UPLOAD_PICTURE_CROP(myCroppa) {
+  return new _promise2.default(function (resolve, reject) {
+    myCroppa.generateBlob(function (blob) {
+      // console.log(blob)
+      resolve(myCroppa.generateDataUrl());
+    }, 'image/png', 1.0);
+  });
+};
+
 /***/ }),
-/* 149 */
+/* 156 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -5361,15 +5637,27 @@ var sleep = function sleep(ms, arg) {
   });
 };
 
+/**
+ *
+ * @description 获取类型
+ * @param {*} val
+ * @return {*} 
+ */
+function typeIs(val) {
+  var typeStr = Object.prototype.toString.call(val);
+  return typeStr.substring(8, typeStr.length - 1).toLowerCase();
+}
+
 module.exports = {
   flow2str: flow2str,
   debounce: debounce,
   throttle: throttle,
-  sleep: sleep
+  sleep: sleep,
+  typeIs: typeIs
 };
 
 /***/ }),
-/* 150 */
+/* 157 */
 /***/ ((module) => {
 
 "use strict";
@@ -5389,13 +5677,24 @@ var curry = function curry(func) {
     }
   };
 };
+var compose = function compose() {
+  for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
 
+  return function (res) {
+    return fns.reduce(function (accum, next) {
+      return next(accum);
+    }, res);
+  };
+};
 module.exports = {
-  curry: curry
+  curry: curry,
+  compose: compose
 };
 
 /***/ }),
-/* 151 */
+/* 158 */
 /***/ ((module) => {
 
 "use strict";
@@ -5434,13 +5733,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 152 */
+/* 159 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var _stringify = __webpack_require__(142);
+var _stringify = __webpack_require__(149);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -5448,11 +5747,11 @@ var _promise = __webpack_require__(74);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _classCallCheck2 = __webpack_require__(153);
+var _classCallCheck2 = __webpack_require__(160);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
-var _createClass2 = __webpack_require__(154);
+var _createClass2 = __webpack_require__(161);
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
@@ -5550,7 +5849,7 @@ var EasyHttp = function () {
 module.exports = { EasyHttp: EasyHttp };
 
 /***/ }),
-/* 153 */
+/* 160 */
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -5565,7 +5864,7 @@ exports.default = function (instance, Constructor) {
 };
 
 /***/ }),
-/* 154 */
+/* 161 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -5598,7 +5897,7 @@ exports.default = function () {
 }();
 
 /***/ }),
-/* 155 */
+/* 162 */
 /***/ ((module) => {
 
 "use strict";
@@ -5691,7 +5990,7 @@ var Tip = {
 module.exports = Tip;
 
 /***/ }),
-/* 156 */
+/* 163 */
 /***/ ((module) => {
 
 "use strict";
